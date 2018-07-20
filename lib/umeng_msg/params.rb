@@ -27,6 +27,11 @@ module UmengMsg
         'payload' => {
           'aps' => {
             'alert'             => options['alert'],
+            'alert'             => {
+              "title" => options['title'],
+              "subtitle" => options['subtitle'] || '',
+              "body" => options['alert']
+            }
             'badge'             => options['badge'],
             'sound'             => options['sound'],
             'content-available' => options['content-available'],
