@@ -65,18 +65,19 @@ module UmengMsg
 
       }
 
-      # TODO 组播过滤
-      # if type == "groupcast"
-      #   tag_list = targets.split(",")
-      #   tag_list.map! { |tag| {tag: tag} }
-      #   params = {
-      #     filter: {
-      #       where: {
-      #         "and" => [{ "or" => tag_list }]
-      #       }
-      #     }
-      #   }.merge(params)
-      # end
+      #  组播过滤
+      if type == "groupcast"
+        # tag_list = targets.split(",")
+        # tag_list.map! { |tag| {tag: tag} }
+        # params = {
+        #   filter: {
+        #     where: {
+        #       "and" => [{ "or" => tag_list }]
+        #     }
+        #   }
+        # }.merge(params)
+        params = params.merge(options['filter'])
+      end
 
       platform.downcase == 'ios' ? params.merge!(ios_payload) : params.merge!(android_payload)
       params = compact_params(params)
