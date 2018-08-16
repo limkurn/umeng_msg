@@ -20,6 +20,7 @@ module UmengMsg
         'production_mode' => UmengMsg.production_mode,
         'description'     => options['description'],
         'thirdparty_id'   => options['thirdparty_id']
+        'filter'          => options['display_type'] == 'groupcast' ? options['filter'] : {}
       }
 
       # 平台参数
@@ -64,20 +65,6 @@ module UmengMsg
         }
 
       }
-
-      #  组播过滤
-      if options['display_type'] == "groupcast"
-        # tag_list = targets.split(",")
-        # tag_list.map! { |tag| {tag: tag} }
-        # params = {
-        #   filter: {
-        #     where: {
-        #       "and" => [{ "or" => tag_list }]
-        #     }
-        #   }
-        # }.merge(params)
-        params = params.merge(options['filter'])
-      end
 
       platform.downcase == 'ios' ? params.merge!(ios_payload) : params.merge!(android_payload)
       params = compact_params(params)
