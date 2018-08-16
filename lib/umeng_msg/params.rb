@@ -19,7 +19,7 @@ module UmengMsg
                              },
         'production_mode' => UmengMsg.production_mode,
         'description'     => options['description'],
-        'thirdparty_id'   => options['thirdparty_id']
+        'thirdparty_id'   => options['thirdparty_id'],
         'filter'          => options['display_type'] == 'groupcast' ? options['filter'] : {}
       }
 
