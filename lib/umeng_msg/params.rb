@@ -66,7 +66,7 @@ module UmengMsg
       }
 
       #  组播过滤
-      if type == "groupcast"
+      if options['display_type'] == "groupcast"
         # tag_list = targets.split(",")
         # tag_list.map! { |tag| {tag: tag} }
         # params = {
